@@ -1,6 +1,8 @@
 ﻿#include <iostream>
 #include <vector>
 #include <fstream>
+#include <clocale>
+#include <windows.h>
 
 #include "cars.h"
 #include "date.h"
@@ -22,10 +24,20 @@ void printData(vector<Car>& cars) {
 
 int main()
 {
+    setlocale(LC_ALL, "Russian");
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
     vector <Car> cars;
     ifstream in("ist.txt");
-    loadData(cars, in);
-
-    printData(cars);
+    try {
+        loadData(cars, in);
+        printData(cars);
+    }
+    catch (runtime_error& e) {
+        cerr << "Invalid argument: " << e.what() << endl;
+    }
+    catch (out_of_range& e) {
+        cerr << "Variable is out of range: " << e.what() << endl;
+    }
     return 0;
 }

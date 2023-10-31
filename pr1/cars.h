@@ -11,8 +11,9 @@ public:
 	Date date;
 
 	Car();
-	Car(string num, Date d);
+	Car(const string& num, Date d);
 
 	void load(istream& in);
 	void print() const;
+	void validateNumber(string numberOfCar);
 };

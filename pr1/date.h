@@ -1,6 +1,7 @@
 #pragma once
-#include <fstream>
+
 #include <iostream>
+
 class Date {
 public:
 	int day;
@@ -8,5 +9,8 @@ public:
 	int year;
 
 	Date();
-	
+	void load(std::istream& in);
+	void print(std::ostream& out) const;
+	bool isValide() const;
+	static void validateDate(int y, int m, int d);
 };
