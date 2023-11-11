@@ -35,7 +35,7 @@ void Date::validateDate(int y, int m, int d) {
 	if (d < 1 || d > 31) {
 		throw out_of_range("Day out of range");
 	}
-	if ((d > 28) && (m == 2) && !((y % 4 == 0) || (y % 100 == 0) || (y % 400 == 0))) {
+	if ((d != 29) && (m == 2) && !((y % 4 == 0) || (y % 100 == 0) || (y % 400 == 0))) {
 		throw runtime_error("Invalid day format in February");
 	}
 	if (((m == 4) || (m == 6) || (m == 9) || (m == 11)) && ((d > 30))) {

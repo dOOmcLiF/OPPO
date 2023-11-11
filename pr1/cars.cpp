@@ -24,6 +24,18 @@ void Car::validateNumber(string value) {
 	}
 }
 
+bool Car::isValid() const
+{
+	try{
+		validateNumber(numberOfCar);
+	}
+	catch (std::exception&) {
+		return false;
+	}
+
+	return date.isValide();
+}
+
 void Car::load(istream& in) {
 	in >> numberOfCar;
 	if (in.fail())

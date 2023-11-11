@@ -15,5 +15,6 @@ public:
 
 	void load(istream& in);
 	void print() const;
-	void validateNumber(string numberOfCar);
+	static void validateNumber(string numberOfCar);
+	bool isValid() const;
 };
