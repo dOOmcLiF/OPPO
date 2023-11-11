@@ -51,7 +51,7 @@ namespace UnitTest
 		TEST_METHOD(ValidateNumber)
 		{
 			std::vector<std::string> cases{
-				"qwerreet`"
+				"B1~3BC24"
 			};
 			for (int i = 0; i < cases.size(); i++) {
 				Car car;
@@ -60,7 +60,6 @@ namespace UnitTest
 					Assert::Fail();
 				}
 				catch (runtime_error& e) {
-					//Assert::AreEqual(e.what(), "Invalid alphabet format in numbers!");
 					return;
 				}
 			}
