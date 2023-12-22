@@ -1,6 +1,7 @@
 ﻿#include "pch.h"
 #include "CppUnitTest.h"
 #include "..\pr1\cars.h"
+#include "..\pr1\date.h"
 #include <sstream>
 #include <vector>
 
@@ -90,9 +91,7 @@ namespace UnitTest
             }
         }
         TEST_METHOD(ValidateDateInvalid) {
-            std::vector<int[3]> cases{
-                { 2022, 13, 40 }
-            };
+            std::vector<std::vector<int>> cases({ {2022, 11, 40} });
 
             try {
                 Date::validateDate(2022, 13, 40);

@@ -1,4 +1,15 @@
-﻿#include <iostream>
+﻿// This is a personal academic project. Dear PVS-Studio, please check it.
+
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
+#define _CRTDBG_MAP_ALLOC
+#include <cstdlib>
+#include <crtdbg.h>
+
+#ifdef _DEBUG
+#define new new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )
+#endif
+
+#include <iostream>
 #include <vector>
 #include <fstream>
 #include <clocale>
@@ -9,7 +20,7 @@
 using namespace std;
 
 void loadData(vector<Car>& cars, istream& in) {
-    while (!in.eof()) {
+    while (!in.eof() && in.good()) {
         Car c;
         c.load(in);
         cars.push_back(c);
@@ -22,8 +33,19 @@ void printData(vector<Car>& cars) {
     }
 }
 
+void CheckMemoryLeaks() {
+    //_CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_FILE);
+    //_CrtSetReportFile(_CRT_WARN, _CRTDBG_FILE_STDOUT);
+    //_CrtSetReportMode(_CRT_ERROR, _CRTDBG_MODE_FILE);
+    //_CrtSetReportFile(_CRT_ERROR, _CRTDBG_FILE_STDOUT);
+    //_CrtSetReportMode(_CRT_ASSERT, _CRTDBG_MODE_FILE);
+    //_CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDOUT);
+    _CrtDumpMemoryLeaks();
+}
+
 int main()
 {
+    atexit(CheckMemoryLeaks);
     setlocale(LC_ALL, "Russian");
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
